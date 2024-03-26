@@ -1,0 +1,70 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" media="all" href="/TIW-MoneyTransfer-PURE_HTML/css/style.css">
+<title>Login page</title>
+</head>
+
+<body class = "background">
+<div align="right">
+	<a class = backto th:href="@{/Logout}">Logout</a>
+</div>
+<div align="left">
+	<a class = "backto" th:href="@{/Home}">Back to Home Page</a>
+</div>
+
+<div>
+	<div class = welcome>
+		<h1>Account details</h1>
+		<div>
+			<h2 th:text=" ${'IDAccount ' + account.idAccount}"></h2>
+			<h2 th:text=" ${'User: ' + account.user}"></h2>
+			<h2 th:text=" ${'Balance: ' + account.balance}"></h2>
+		</div>
+	</div>
+
+	<div id="div_transactions" class = "div" th:if="${transactions.size() > 0}">
+ 		<table>
+ 		<caption>
+			Transactions
+		</caption>
+			<thead>
+				<tr>
+					<th>Date</th>
+					<th>Amount</th>
+					<th>Origin</th>
+					<th>Destination</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="t : ${transactions}">
+					<td th:text="${t.date}"></td>
+					<td th:text="${t.amount}"></td>
+					<td th:text="${t.idOrigin}"></td>
+					<td th:text="${t.idDestination}"></td>
+					<td th:text="${t.description}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div th:if="${transactions.size() <= 0}"> Zero transaction</div>
+	
+	<div id = "div_send_form" class ="form">
+		<p>Complete the form to send money</p>	
+		<form action="#" th:action="@{/CreateTransaction(idAccount=${idAccount})}" method="POST" >
+			<fieldset> 
+				<p> Username Destination: <input type="text" name="userDestination" required /> </p>
+				<p> Account ID Destination: <input type="number" name="idDestination" required /> </p>
+				<p> Description: <input type="text" name="description" required /> </p>
+				<p> Amount: <input type="number" name="amount" required /> </p>
+							
+				<input type="submit" name="Create Transaction" value = "Send Money">
+			</fieldset>
+		</form>
+	</div>
+		<br><br><br>
+</div>
+</body>
+</html>

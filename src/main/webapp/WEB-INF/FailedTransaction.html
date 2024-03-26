@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" media="all" href="/TIW-MoneyTransfer-PURE_HTML/css/style.css">
+<title>Login page</title>
+</head>
+
+<body class = "background">
+<div align="right">
+	<a class = backto th:href="@{/Logout}">Logout</a>
+</div>
+<div class=basic>
+	<div class = welcome>
+		<h1>Failed transaction</h1>
+		<h3>The transaction failed.</h3>
+		<h3 th:text="${err}"></h3>
+		<br><br><br>
+		<a class = "backto" th:href="@{/GetAccountDetails(idAccount=${origAcc.idAccount})}">
+			Back to Account Page</a>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" media="all" href="/TIW-MoneyTransfer-PURE_HTML/css/style.css">
+<title>Login page</title>
+</head>
+
+<body class = "background">
+<div align="right">
+	<a class = backto th:href="@{/Logout}">Logout</a>
+</div>
+<div class=basic>
+	<div class = welcome>
+		<h1>Transaction Confirmation</h1>
+		<h3> Transaction of</h3><h3 th:text="${amount}"></h3>
+		<h3> to </h3><h3 th:text="${destAcc.user}"></h3><h3>was successful.</h3>
+	</div>
+	<div class = tableTransaction>
+		<table>
+		    <thead>	
+		    <tr>
+		   	    <th><b>ID</b></th>
+		        <th>Old balance</th>
+		        <th><b>New balance</b></th>
+		    </tr>
+		    </thead>
+		    <tbody>
+		    <tr>
+		        <td th:text="${origAcc.idAccount}"></td>
+		        <td th:text="${oldBalanceOrig}"></td>
+		        <td th:text="${newBalanceOrig}"></td>
+		    </tr>
+		    <tr>
+		        <td th:text="${destAcc.idAccount}"></td>
+		        <td th:text="${oldBalanceDest}"></td>
+		        <td th:text="${newBalanceDest}"></td>
+		    </tr>
+		    </tbody>
+		</table>
+	</div>
+	<br><br><br>
+<a class = "backto" th:href="@{/GetAccountDetails(idAccount=${origAcc.idAccount})}">
+	Back to Account Page</a>
+</div>	
+</body>
+</html>

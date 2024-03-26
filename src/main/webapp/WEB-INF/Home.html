@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" media="all" href="/TIW-MoneyTransfer-PURE_HTML/css/style.css">
+<title>Login page</title>
+</head>
+
+<body class = "background">
+<div align="right">
+	<a th:href="@{/Logout}">Logout</a>
+</div>
+	
+<div class = welcome>
+	 <h2 th:text="${'Welcome to your Home, ' + session.user.name}"></h2>	
+</div>
+
+<div class = form>
+	<div th:if="${accounts.size() > 0}">
+	<p> Select your account </p>
+	<table>
+		<tbody>
+			<tr th:each="a : ${accounts}">
+				<td>
+					<a th:href="@{/GetAccountDetails(idAccount=${a.idAccount})}"
+					 th:text="${'Account' + ' ' + a.idAccount}"></a>	
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+  
+	<div th:if="${accounts.size() == 0}"> 
+	No accounts were created.
+	</div>
+	
+</div>
+
+</body>
+</html>
+

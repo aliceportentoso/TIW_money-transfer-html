@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  	<meta charset="ISO-8859-1">
+	<link rel="stylesheet" type="text/css" media="all" href="/TIW-MoneyTransfer-PURE_HTML/css/style.css">
+	<title>Login page</title>
+</head>
+
+<body class = "background">
+
+<div class=basic>
+
+	<div class = welcome>
+	<h1>Money Transfer</h1>
+	<h2>Welcome  </h2>
+	<h3>Login or Signup to join the application!</h3>
+	</div>
+	
+	<div class = "sx">
+		<form action="CheckLogin" method="POST" accept-charset=utf-8>
+		<p>Login</p>
+			<fieldset>
+			<input type="text" name="username" placeholder="Your Username" required>
+			<input type="password" name="pwd" placeholder="Your Password" required> 
+			<button id="loginbutton" type="submit">Login</button>
+			<p class = error th:text="${err1}"></p>
+			</fieldset>
+		</form>
+	</div>
+	
+	<div class = "dx">	
+		<form action="CheckSignUp" method="POST">
+		<p>New user? Sign up!</p>
+		<fieldset>
+			Name:   		<input type="text" name="name" required> <br>
+			Surname:		<input type="text" name="surname" required> <br>
+			Username:	 	<input type="text" name="username" required> <br>
+			Email: 			<input type="email" name="email" required> <br>
+			Password:	 	<input type="password" name="pwd" required> <br>
+			Repeat password:<input type="password" name="pwd2" required> <br>
+			<button type="submit">Signup</button>
+			<p class = error th:text=" ${err2}"></p>
+					
+		</fieldset>	
+		</form>
+	</div>
+</div>
+</body>
+</html>
